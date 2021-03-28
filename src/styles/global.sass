@@ -1,0 +1,54 @@
+$font-stack: Roboto, Helvetica, Arial, sans-serif
+$primary-color: #222
+$secondary-color: #059
+
+.row-element
+    flex: 1
+    display: flex
+
+@mixin text($left, $right)
+    margin: auto $left auto $right
+    @media (max-width:800px)
+        display: none
+
+body
+    font: 100% $font-stack
+    color: $primary-color
+
+p
+    display: flex
+    max-width: 32rem
+    text-align: center
+
+.header
+    background-color: $secondary-color
+    min-height: 9rem
+    display: grid
+    place-items: center
+
+.footer
+    background-color: $secondary-color
+    min-height: 2rem
+    margin: 3rem 0 0
+
+.titles
+    display: grid
+    place-items: center
+    margin: 3rem auto
+
+.avatar
+    border-radius: 50%
+    margin-bottom: -3rem
+    border: 1rem solid $secondary-color
+    background-color: $secondary-color
+    width: 9rem
+.row
+    display: flex
+    text-align: center
+    margin: 1rem auto
+
+.pretext
+    @include text(0, auto)
+
+.posttext
+    @include text(auto, 0)
