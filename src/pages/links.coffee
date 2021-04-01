@@ -10,7 +10,20 @@ library.add(fab)
 
 theme = createMuiTheme
   typography: button: fontSize: '100%', textTransform: 'none'
-  palette: primary: main: '#059'
+  palette: primary: main: '#057'
+
+mkrow = (k, v) -> <div className="row">
+  <div className="row-element">
+    <div className="pretext">{v.split('ñ')[0]}</div>
+  </div>
+  <Button href={'https://j.mp/jmora_' + k.toLowerCase()}
+    startIcon={<FontAwesomeIcon icon={["fab", k.toLowerCase()]} />}
+    variant={'contained' if useMediaQuery '(max-width:800px)'}
+    color="primary">{k}</Button>
+  <div className="row-element">
+    <div className="posttext">{v.split('ñ')[1]}</div>
+  </div>
+</div> 
 
 IndexPage = -> <ThemeProvider theme={theme}>
   <div className="header">
@@ -19,20 +32,9 @@ IndexPage = -> <ThemeProvider theme={theme}>
   <div className="titles">
     <h1>{data.name}</h1>
     <h2>{data.title}</h2>
-    {<p>{e}</p> for e in data.description.split '\n\n'}
+    { <p>{e}</p> for e in data.description.split '\n\n' }
   </div>
-  { <div className="row">
-      <div className="row-element">
-        <div className="pretext">{v.split('ñ')[0]}</div>
-      </div>
-      <Button href={'https://j.mp/jmora_' + k.toLowerCase()}
-        startIcon={<FontAwesomeIcon icon={["fab", k.toLowerCase()]} />}
-        variant={'contained' if useMediaQuery '(max-width:800px)'}
-        color="primary">{k}</Button>
-      <div className="row-element">
-        <div className="posttext">{v.split('ñ')[1]}</div>
-      </div>
-    </div> for k, v of data.brands }
+  { mkrow k, v for k, v of data.brands }
   <div className="footer" />
 </ThemeProvider>
 
