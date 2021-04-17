@@ -4,9 +4,16 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Button, useMediaQuery } from '@material-ui/core'
-import data from "../content/links.yaml"
-import "../styles/global.sass"
+import {Helmet} from 'react-helmet'
+import data from '../content/links.yaml'
+import '../styles/global.sass'
 library.add(fab)
+
+props =
+  title: 'Jose Mora — Artificial Intelligence and Data Science Consultant'
+  description: data.description
+  image: 'https://avatars.githubusercontent.com/u/118387'
+  url: 'https://jmora.github.io/links/'
 
 theme = createMuiTheme
   typography: button: fontSize: '100%', textTransform: 'none'
@@ -26,8 +33,13 @@ mkrow = (k, v) -> <div className="row">
 </div> 
 
 IndexPage = -> <ThemeProvider theme={theme}>
+  <Helmet>
+    <title>{props.title}</title>
+    {<meta property={'og:' + k} content={v}/> for k, v of props}
+    <meta name="twitter:card" content="summary" />
+  </Helmet>
   <div className="header">
-    <img className="avatar" src="https://avatars.githubusercontent.com/u/118387" />
+    <img className="avatar" src={props.image}/>
   </div>
   <div className="titles">
     <h1>{data.name}</h1>
