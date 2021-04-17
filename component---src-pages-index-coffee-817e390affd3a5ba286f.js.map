@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://gatsby-test/./src/pages/index.coffee"],"names":[],"mappings":"mIAEA,UAAe,EAAf","file":"component---src-pages-index-coffee-817e390affd3a5ba286f.js","sourcesContent":["import IndexPage from './links'\n\nexport default IndexPage\n"],"sourceRoot":""}
